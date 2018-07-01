@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  root "static#home"
+
+  #####################
   resources :exercises
   resources :workouts
   resources :users

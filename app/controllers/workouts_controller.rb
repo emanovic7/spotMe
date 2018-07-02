@@ -33,12 +33,8 @@ class WorkoutsController < ApplicationController
     end
 
     def destroy
-      session[:workout_id] = nil
-      redirect_to workouts_path
+      @workout.delete
     end
-
-
-
 
 
 

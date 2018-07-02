@@ -1,5 +1,5 @@
 class ExercisesController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
   def index
     @exercises = Exercise.all
@@ -14,7 +14,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new(exercise_params)
       if @exercise.save
         session[:exercise_id] = @exercise.id
-        redirect_to exercise_path
+        redirect_to exercise_path(@exercise)
       else
         render :new
       end
@@ -26,7 +26,7 @@ class ExercisesController < ApplicationController
 
   def update
     if @exercise.update(exercise_params)
-      redirect_to exercise_path
+      redirect_to exercise_path(@exercise)
     else
       render :edit
     end
@@ -39,6 +39,9 @@ class ExercisesController < ApplicationController
 
 
 private
+  def set_exercise
+    @exercise = Exercise.find(params[:id])
+  end
 
   def exercise_params
     params.require(:exercise).permit(

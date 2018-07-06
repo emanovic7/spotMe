@@ -1,5 +1,8 @@
 <p>Welcome  <%= @user.user_name %> - level</p>
 Here are your workouts this week
+<% @user.workouts.all do |workout| %>
+    <%= workout.name %>
+<% end %>
 Here are your friends
 Add new friends (only for a workout, 24 hours before. )
 Create your own workout routine

@@ -11,5 +11,5 @@ Description: </br>
 
 <br></br>
 <%= link_to "Edit Workout", edit_workout_path(@workout)%>
-
-<%= @workout.users.name %>
+<br></br>
+Created by: <%= link_to @workout.user.user_name, user_path(@workout.user) %>

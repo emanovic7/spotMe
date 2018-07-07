@@ -3,7 +3,7 @@ class WorkoutsController < ApplicationController
 
 
     def index
-      if logged_in? && @user = current_user
+      if logged_in? && @user == current_user
         @workouts = Workout.all
       else
         redirect_to signin_path
@@ -11,7 +11,7 @@ class WorkoutsController < ApplicationController
     end
 
     def new
-      if logged_in? && current_user
+      if logged_in? && @user = current_user
         @workout = Workout.new
       else
         redirect_to signin_path
@@ -19,16 +19,16 @@ class WorkoutsController < ApplicationController
     end
 
     def create
-      if logged_in? && current_user
+      if logged_in? && @user = current_user
         @workout = Workout.new(workout_params)
-        #@workout.user = current_user
+        @workout.user = current_user
           if @workout.save
             #session[:workout_id] = @workout.id
             redirect_to workout_path(@workout)
           else
             render :new
           end
-        else
+      else
           redirect_to signin_path
         end
     end

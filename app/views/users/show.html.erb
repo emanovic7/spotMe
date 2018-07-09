@@ -2,12 +2,11 @@
 
 
 Here are your workouts this week: <br></br>
-<% @user.workouts.each do |workout|%>
-<ol>
-  <li><%= link_to workout.name, workout_path(workout) %></li>
+<ol type="1">
+  <% @user.workouts.each_with_index do |workout, i|%>
+    <li><%= link_to workout.name, workout_path(workout) %></li>
+  <% end %>
 </ol>
-<% end %>
-
 
 <br></br>
 Here are your friends

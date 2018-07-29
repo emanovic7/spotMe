@@ -21,11 +21,17 @@
       <%= f.label :description, "Describe Workout" %>
       <%= f.text_area :description %>
     </div>
+      </br>
+
+    <div>
+      <%= link_to "Add Exercise", :controller => 'exercises', :action => 'new' %>
+    </div>
+      </br>
 
     <div>
       <%= f.submit %>
     </div>
-    
+
 </div>
 
 

@@ -23,7 +23,7 @@ class WorkoutsController < ApplicationController
         @workout = Workout.new(workout_params)
         @workout.user = current_user
           if @workout.save
-            #session[:workout_id] = @workout.id
+            session[:workout_id] = @workout.id
             redirect_to workout_path(@workout)
           else
             render :new

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root "static#home"
   get '/signin', to: "sessions#new"
   post "/sessions/create", to: "sessions#create"

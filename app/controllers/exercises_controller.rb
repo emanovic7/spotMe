@@ -1,12 +1,20 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @exercises = Exercise.all
+   def index
+     @exercises = Exercise.all
+   end
+
+  def show
+    @exercise = Exercise.find(params[:id])
   end
 
   def new
-    @exercise = Exercise.new
+    if logged_in? && @user = current_user
+      @exercise = Exercise.new
+    else
+      redirect_to signin_path
+    end
   end
 
 
